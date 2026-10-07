@@ -1,30 +1,35 @@
+import { Link } from 'react-router-dom'
+
 function Login() {
   return (
-    <div>
-      <h1>Login</h1>
+    <div className="login-page">
 
-      <p>Login to your Saarthi Education Online account.</p>
+      <h1>Login to Saarthi</h1>
 
-      <input
-        type="email"
-        placeholder="Email"
-      />
+      <p>Select your role to continue</p>
 
-      <br />
+      <div className="role-login-options">
 
-      <input
-        type="password"
-        placeholder="Password"
-      />
+        <Link to="/login/student">
+          👨‍🎓
+          <br />
+          Student Login
+        </Link>
 
-      <br />
+        <Link to="/login/teacher">
+          👨‍🏫
+          <br />
+          Teacher Login
+        </Link>
 
-      <button>Login</button>
+        <Link to="/login/parent">
+          👨‍👩‍👦
+          <br />
+          Parent Login
+        </Link>
 
-      <p>
-        Don't have an account?
-        <a href="/signup"> Sign Up</a>
-      </p>
+      </div>
+
     </div>
   )
 }
