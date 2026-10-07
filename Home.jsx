@@ -12,23 +12,24 @@ function Home() {
 
       <nav className="navbar">
 
-        <div className="nav-container">
+        <div className="navbar-container">
 
           <a href="/" className="logo">
-            <span>SAARTHI</span>
-            <small>Education Online</small>
+            <span className="logo-main">
+              SAARTHI
+            </span>
+
+            <span className="logo-sub">
+              Education Online
+            </span>
           </a>
 
-          <button
-            className="mobile-menu-btn"
-            onClick={() => setMenuOpen(!menuOpen)}
-          >
-            ☰
-          </button>
 
-          <div className={`nav-links ${menuOpen ? 'active' : ''}`}>
+          <div className="nav-links">
 
-            <a href="/">Home</a>
+            <a href="/">
+              Home
+            </a>
 
             <a href="#live-classes">
               Live Classes
@@ -42,16 +43,23 @@ function Home() {
               Career Guidance
             </a>
 
-            {/* IMPORTANT:
-                Navbar Login goes to role selection */}
+            {/* Navbar Login = Role Selection */}
             <a
               href="/login"
-              className="nav-login-btn"
+              className="login-btn"
             >
               Login
             </a>
 
           </div>
+
+
+          <button
+            className="menu-btn"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            ☰
+          </button>
 
         </div>
 
@@ -59,71 +67,99 @@ function Home() {
 
 
       {/* =========================
-          HERO SECTION
+          MOBILE MENU
+      ========================= */}
+
+      {menuOpen && (
+        <div
+          style={{
+            position: 'absolute',
+            top: '65px',
+            right: '15px',
+            background: 'white',
+            padding: '15px',
+            borderRadius: '10px',
+            boxShadow: '0 10px 30px rgba(0,0,0,0.12)',
+            zIndex: 200
+          }}
+        >
+
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '12px'
+            }}
+          >
+
+            <a href="/">
+              Home
+            </a>
+
+            <a href="#live-classes">
+              Live Classes
+            </a>
+
+            <a href="#tests">
+              Tests
+            </a>
+
+            <a href="#career">
+              Career Guidance
+            </a>
+
+            <a href="/login">
+              Login
+            </a>
+
+          </div>
+
+        </div>
+      )}
+
+
+      {/* =========================
+          HERO
       ========================= */}
 
       <section className="hero">
 
         <div className="hero-content">
 
-          <div className="hero-text">
+          <p className="hero-label">
+            YOUR COMPLETE EDUCATION PARTNER
+          </p>
 
-            <p className="hero-label">
-              YOUR COMPLETE EDUCATION PARTNER
-            </p>
+          <h1>
+            Learn Better.
+            <span>
+              Grow Smarter.
+            </span>
+          </h1>
 
-            <h1>
-              Learn Better.
-              <br />
-              <span>Grow Smarter.</span>
-            </h1>
-
-            <p className="hero-description">
-              Saarthi connects students, teachers and parents
-              on one powerful education platform.
-              Get instant doubt support, attend live classes,
-              take tests and track your progress.
-            </p>
-
-            <div className="hero-buttons">
-
-              <a
-                href="/login"
-                className="primary-btn"
-              >
-                Get Started
-              </a>
-
-              <a
-                href="#features"
-                className="secondary-btn"
-              >
-                Explore Features
-              </a>
-
-            </div>
-
-          </div>
+          <p className="hero-description">
+            Saarthi connects students, teachers and parents
+            on one powerful education platform. Get instant
+            doubt support, attend live classes, take tests
+            and track your progress.
+          </p>
 
 
-          <div className="hero-visual">
+          <div className="hero-buttons">
 
-            <div className="hero-card">
+            <a
+              href="/login"
+              className="primary-btn"
+            >
+              Get Started
+            </a>
 
-              <div className="hero-card-icon">
-                🎓
-              </div>
-
-              <h3>
-                One Platform.
-              </h3>
-
-              <p>
-                Complete learning ecosystem
-                for students, teachers and parents.
-              </p>
-
-            </div>
+            <a
+              href="#features"
+              className="secondary-btn"
+            >
+              Explore Features
+            </a>
 
           </div>
 
@@ -136,7 +172,7 @@ function Home() {
           ROLE SECTION
       ========================= */}
 
-      <section className="roles-section">
+      <section className="role-section">
 
         <div className="section-heading">
 
@@ -156,12 +192,10 @@ function Home() {
         </div>
 
 
-        <div className="roles-grid">
+        <div className="role-grid">
 
 
-          {/* =====================
-              STUDENT
-          ===================== */}
+          {/* STUDENT */}
 
           <div className="role-card">
 
@@ -201,9 +235,7 @@ function Home() {
           </div>
 
 
-          {/* =====================
-              TEACHER
-          ===================== */}
+          {/* TEACHER */}
 
           <div className="role-card">
 
@@ -243,9 +275,7 @@ function Home() {
           </div>
 
 
-          {/* =====================
-              PARENT
-          ===================== */}
+          {/* PARENT */}
 
           <div className="role-card">
 
@@ -293,7 +323,7 @@ function Home() {
       ========================= */}
 
       <section
-        className="features-section"
+        className="features"
         id="features"
       >
 
@@ -315,7 +345,8 @@ function Home() {
         </div>
 
 
-        <div className="features-grid">
+        <div className="feature-grid">
+
 
           <div className="feature-card">
 
@@ -436,11 +467,11 @@ function Home() {
 
 
       {/* =========================
-          LIVE CLASSES
+          USER PORTALS
       ========================= */}
 
       <section
-        className="portal-section"
+        className="users-section"
         id="live-classes"
       >
 
@@ -463,12 +494,15 @@ function Home() {
         </div>
 
 
-        <div className="portal-grid">
+        <div className="user-grid">
 
-          <div className="portal-card">
 
-            <div className="portal-icon">
-              👨‍🎓
+          {/* STUDENT PORTAL */}
+
+          <div className="user-card">
+
+            <div className="user-number">
+              01
             </div>
 
             <h3>
@@ -482,7 +516,7 @@ function Home() {
 
             <a
               href="/login/student"
-              className="portal-link"
+              className="card-btn"
             >
               Student Login →
             </a>
@@ -490,10 +524,12 @@ function Home() {
           </div>
 
 
-          <div className="portal-card">
+          {/* TEACHER PORTAL */}
 
-            <div className="portal-icon">
-              👨‍🏫
+          <div className="user-card">
+
+            <div className="user-number">
+              02
             </div>
 
             <h3>
@@ -507,7 +543,7 @@ function Home() {
 
             <a
               href="/login/teacher"
-              className="portal-link"
+              className="card-btn"
             >
               Teacher Login →
             </a>
@@ -515,10 +551,12 @@ function Home() {
           </div>
 
 
-          <div className="portal-card">
+          {/* PARENT PORTAL */}
 
-            <div className="portal-icon">
-              👨‍👩‍👦
+          <div className="user-card">
+
+            <div className="user-number">
+              03
             </div>
 
             <h3>
@@ -532,7 +570,7 @@ function Home() {
 
             <a
               href="/login/parent"
-              className="portal-link"
+              className="card-btn"
             >
               Parent Login →
             </a>
@@ -585,7 +623,7 @@ function Home() {
 
       <footer className="footer">
 
-        <div className="footer-content">
+        <div className="footer-container">
 
           <div className="footer-brand">
 
@@ -597,55 +635,34 @@ function Home() {
               Education Online
             </p>
 
-            <span>
-              Your complete education partner.
-            </span>
-
           </div>
 
 
           <div className="footer-links">
 
-            <div>
+            <a href="#live-classes">
+              Live Classes
+            </a>
 
-              <h4>
-                Platform
-              </h4>
+            <a href="#tests">
+              Tests
+            </a>
 
-              <a href="#live-classes">
-                Live Classes
-              </a>
+            <a href="#career">
+              Career Guidance
+            </a>
 
-              <a href="#tests">
-                Tests
-              </a>
+            <a href="/login/student">
+              Student
+            </a>
 
-              <a href="#career">
-                Career Guidance
-              </a>
+            <a href="/login/teacher">
+              Teacher
+            </a>
 
-            </div>
-
-
-            <div>
-
-              <h4>
-                Portals
-              </h4>
-
-              <a href="/login/student">
-                Student
-              </a>
-
-              <a href="/login/teacher">
-                Teacher
-              </a>
-
-              <a href="/login/parent">
-                Parent
-              </a>
-
-            </div>
+            <a href="/login/parent">
+              Parent
+            </a>
 
           </div>
 
