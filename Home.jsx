@@ -1,437 +1,591 @@
-function Home() {
-  return (
-    <div className="app">
+import { useState } from 'react'
 
-      {/* NAVBAR */}
-      <header className="navbar">
-        <div className="navbar-container">
+function Home() {
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  return (
+    <div className="home-page">
+
+      {/* =========================
+          NAVBAR
+      ========================= */}
+
+      <nav className="navbar">
+
+        <div className="nav-container">
 
           <a href="/" className="logo">
-            <span className="logo-main">SAARTHI</span>
-            <span className="logo-sub">Education Online</span>
+            <span>SAARTHI</span>
+            <small>Education Online</small>
           </a>
 
-          <nav className="nav-links">
-            <a href="#home">Home</a>
-            <a href="#classes">Live Classes</a>
-            <a href="#tests">Tests</a>
-            <a href="#guidance">Career Guidance</a>
-          </nav>
-
-          <a href="/login" className="login-btn">
-            Login
-          </a>
-
-          <button className="menu-btn">
+          <button
+            className="mobile-menu-btn"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
             ☰
           </button>
 
+          <div className={`nav-links ${menuOpen ? 'active' : ''}`}>
+
+            <a href="/">Home</a>
+
+            <a href="#live-classes">
+              Live Classes
+            </a>
+
+            <a href="#tests">
+              Tests
+            </a>
+
+            <a href="#career">
+              Career Guidance
+            </a>
+
+            {/* IMPORTANT:
+                Navbar Login goes to role selection */}
+            <a
+              href="/login"
+              className="nav-login-btn"
+            >
+              Login
+            </a>
+
+          </div>
+
         </div>
-      </header>
+
+      </nav>
 
 
-      {/* HERO */}
-      <main>
+      {/* =========================
+          HERO SECTION
+      ========================= */}
 
-        <section className="hero" id="home">
+      <section className="hero">
 
-          <div className="hero-content">
+        <div className="hero-content">
+
+          <div className="hero-text">
 
             <p className="hero-label">
-              SAARTHI EDUCATION ONLINE
+              YOUR COMPLETE EDUCATION PARTNER
             </p>
 
             <h1>
-              Your Complete
-              <span>Education Platform</span>
+              Learn Better.
+              <br />
+              <span>Grow Smarter.</span>
             </h1>
 
             <p className="hero-description">
-              Attend live classes, take online tests, track your progress
-              and get the right guidance for your future — all in one place.
+              Saarthi connects students, teachers and parents
+              on one powerful education platform.
+              Get instant doubt support, attend live classes,
+              take tests and track your progress.
             </p>
 
             <div className="hero-buttons">
 
-              <a href="#classes" className="primary-btn">
-                Explore Live Classes
+              <a
+                href="/login"
+                className="primary-btn"
+              >
+                Get Started
               </a>
 
-              <a href="#roles" className="secondary-btn">
-                Get Started
+              <a
+                href="#features"
+                className="secondary-btn"
+              >
+                Explore Features
               </a>
 
             </div>
 
           </div>
 
-        </section>
 
+          <div className="hero-visual">
 
-        {/* ROLE SELECTION */}
-        <section className="role-section" id="roles">
+            <div className="hero-card">
 
-          <div className="section-heading">
-
-            <p className="section-label">
-              WELCOME TO SEO
-            </p>
-
-            <h2>
-              How do you want to continue?
-            </h2>
-
-            <p>
-              Choose your role to access your personalized
-              Saarthi Education Online portal.
-            </p>
-
-          </div>
-
-
-          <div className="role-grid">
-
-            {/* STUDENT */}
-
-            <article className="role-card">
-
-              <div className="role-icon">
+              <div className="hero-card-icon">
                 🎓
               </div>
 
               <h3>
-                I'm a Student
+                One Platform.
               </h3>
 
               <p>
-                Attend live classes, take online tests, track your
-                performance and get guidance for your future.
+                Complete learning ecosystem
+                for students, teachers and parents.
               </p>
 
-              <div className="role-buttons">
-
-                <a href="/login" className="primary-btn">
-                  Login
-                </a>
-
-                <a href="/signup" className="secondary-btn">
-                  Sign Up
-                </a>
-
-              </div>
-
-            </article>
-
-
-            {/* TEACHER */}
-
-            <article className="role-card">
-
-              <div className="role-icon">
-                👨‍🏫
-              </div>
-
-              <h3>
-                I'm a Teacher
-              </h3>
-
-              <p>
-                Conduct live classes, create tests, manage students
-                and understand their performance.
-              </p>
-
-              <div className="role-buttons">
-
-                <a href="/login" className="primary-btn">
-                  Login
-                </a>
-
-                <a href="/signup" className="secondary-btn">
-                  Sign Up
-                </a>
-
-              </div>
-
-            </article>
-
-
-            {/* PARENT */}
-
-            <article className="role-card">
-
-              <div className="role-icon">
-                👨‍👩‍👦
-              </div>
-
-              <h3>
-                I'm a Parent
-              </h3>
-
-              <p>
-                Monitor your child's classes, attendance, test results
-                and complete learning progress.
-              </p>
-
-              <div className="role-buttons">
-
-                <a href="/login" className="primary-btn">
-                  Login
-                </a>
-
-                <a href="/signup" className="secondary-btn">
-                  Sign Up
-                </a>
-
-              </div>
-
-            </article>
+            </div>
 
           </div>
 
-        </section>
+        </div>
+
+      </section>
 
 
-        {/* FEATURES */}
-        <section className="features" id="classes">
+      {/* =========================
+          ROLE SECTION
+      ========================= */}
 
-          <div className="section-heading">
+      <section className="roles-section">
+
+        <div className="section-heading">
+
+          <p className="section-label">
+            SAARTHI FOR EVERYONE
+          </p>
+
+          <h2>
+            Choose Your Role
+          </h2>
+
+          <p>
+            A dedicated experience for every member
+            of the education ecosystem.
+          </p>
+
+        </div>
+
+
+        <div className="roles-grid">
+
+
+          {/* =====================
+              STUDENT
+          ===================== */}
+
+          <div className="role-card">
+
+            <div className="role-icon">
+              👨‍🎓
+            </div>
+
+            <h3>
+              Student
+            </h3>
+
+            <p>
+              Learn from expert teachers, solve doubts
+              instantly, attend live classes and track
+              your academic progress.
+            </p>
+
+            <div className="role-buttons">
+
+              {/* DIRECT STUDENT LOGIN */}
+              <a
+                href="/login/student"
+                className="primary-btn"
+              >
+                Login
+              </a>
+
+              <a
+                href="/signup"
+                className="secondary-btn"
+              >
+                Sign Up
+              </a>
+
+            </div>
+
+          </div>
+
+
+          {/* =====================
+              TEACHER
+          ===================== */}
+
+          <div className="role-card">
+
+            <div className="role-icon">
+              👨‍🏫
+            </div>
+
+            <h3>
+              Teacher
+            </h3>
+
+            <p>
+              Connect with students, conduct live classes,
+              solve doubts and manage your teaching
+              activities from one place.
+            </p>
+
+            <div className="role-buttons">
+
+              {/* DIRECT TEACHER LOGIN */}
+              <a
+                href="/login/teacher"
+                className="primary-btn"
+              >
+                Login
+              </a>
+
+              <a
+                href="/signup"
+                className="secondary-btn"
+              >
+                Join as Teacher
+              </a>
+
+            </div>
+
+          </div>
+
+
+          {/* =====================
+              PARENT
+          ===================== */}
+
+          <div className="role-card">
+
+            <div className="role-icon">
+              👨‍👩‍👦
+            </div>
+
+            <h3>
+              Parent
+            </h3>
+
+            <p>
+              Monitor your child's attendance, performance,
+              test results and learning progress.
+            </p>
+
+            <div className="role-buttons">
+
+              {/* DIRECT PARENT LOGIN */}
+              <a
+                href="/login/parent"
+                className="primary-btn"
+              >
+                Login
+              </a>
+
+              <a
+                href="/signup"
+                className="secondary-btn"
+              >
+                Sign Up
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* =========================
+          FEATURES
+      ========================= */}
+
+      <section
+        className="features-section"
+        id="features"
+      >
+
+        <div className="section-heading">
+
+          <p className="section-label">
+            EVERYTHING YOU NEED
+          </p>
+
+          <h2>
+            Powerful Learning Features
+          </h2>
+
+          <p>
+            Saarthi brings the complete learning journey
+            under one roof.
+          </p>
+
+        </div>
+
+
+        <div className="features-grid">
+
+          <div className="feature-card">
+
+            <div className="feature-icon">
+              📡
+            </div>
+
+            <h3>
+              Live Classes
+            </h3>
+
+            <p>
+              Join free and paid live classes
+              with experienced teachers.
+            </p>
+
+          </div>
+
+
+          <div className="feature-card">
+
+            <div className="feature-icon">
+              🆘
+            </div>
+
+            <h3>
+              Instant Doubt Help
+            </h3>
+
+            <p>
+              Connect with an available teacher
+              and get your doubt solved instantly.
+            </p>
+
+          </div>
+
+
+          <div
+            className="feature-card"
+            id="tests"
+          >
+
+            <div className="feature-icon">
+              📝
+            </div>
+
+            <h3>
+              Online Tests
+            </h3>
+
+            <p>
+              Take tests, get instant results
+              and understand your performance.
+            </p>
+
+          </div>
+
+
+          <div className="feature-card">
+
+            <div className="feature-icon">
+              📊
+            </div>
+
+            <h3>
+              Progress Reports
+            </h3>
+
+            <p>
+              Track subject-wise performance,
+              attendance and academic growth.
+            </p>
+
+          </div>
+
+
+          <div className="feature-card">
+
+            <div className="feature-icon">
+              ⭐
+            </div>
+
+            <h3>
+              Teacher Feedback
+            </h3>
+
+            <p>
+              Rate your learning experience
+              and share feedback with teachers.
+            </p>
+
+          </div>
+
+
+          <div
+            className="feature-card"
+            id="career"
+          >
+
+            <div className="feature-icon">
+              🎯
+            </div>
+
+            <h3>
+              Career Guidance
+            </h3>
+
+            <p>
+              Get career and college guidance
+              after Class 10 and Class 12.
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* =========================
+          LIVE CLASSES
+      ========================= */}
+
+      <section
+        className="portal-section"
+        id="live-classes"
+      >
+
+        <div className="section-heading">
+
+          <p className="section-label">
+            ONE PLATFORM
+          </p>
+
+          <h2>
+            Built For The Complete
+            Education Ecosystem
+          </h2>
+
+          <p>
+            Students learn, teachers teach and parents
+            stay connected.
+          </p>
+
+        </div>
+
+
+        <div className="portal-grid">
+
+          <div className="portal-card">
+
+            <div className="portal-icon">
+              👨‍🎓
+            </div>
+
+            <h3>
+              Student Portal
+            </h3>
+
+            <p>
+              Classes, tests, instant doubt solving,
+              progress and learning history.
+            </p>
+
+            <a
+              href="/login/student"
+              className="portal-link"
+            >
+              Student Login →
+            </a>
+
+          </div>
+
+
+          <div className="portal-card">
+
+            <div className="portal-icon">
+              👨‍🏫
+            </div>
+
+            <h3>
+              Teacher Portal
+            </h3>
+
+            <p>
+              Manage classes, students, doubts,
+              schedules and feedback.
+            </p>
+
+            <a
+              href="/login/teacher"
+              className="portal-link"
+            >
+              Teacher Login →
+            </a>
+
+          </div>
+
+
+          <div className="portal-card">
+
+            <div className="portal-icon">
+              👨‍👩‍👦
+            </div>
+
+            <h3>
+              Parent Portal
+            </h3>
+
+            <p>
+              Monitor your child's learning,
+              attendance and academic performance.
+            </p>
+
+            <a
+              href="/login/parent"
+              className="portal-link"
+            >
+              Parent Login →
+            </a>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* =========================
+          SECURITY
+      ========================= */}
+
+      <section className="security-section">
+
+        <div className="security-content">
+
+          <div className="security-icon">
+            🔐
+          </div>
+
+          <div>
 
             <p className="section-label">
-              EVERYTHING IN ONE PLACE
+              SAFE & SECURE
             </p>
 
             <h2>
-              Everything You Need to Learn Better
+              Your Learning Data Matters
             </h2>
 
             <p>
-              From live learning to performance tracking and career
-              guidance, SEO brings your education journey together.
+              Saarthi is designed with privacy and
+              security in mind so students, teachers
+              and parents can learn and connect safely.
             </p>
 
           </div>
 
+        </div>
 
-          <div className="feature-grid">
+      </section>
 
-            <article className="feature-card">
 
-              <div className="feature-icon">
-                🎥
-              </div>
+      {/* =========================
+          FOOTER
+      ========================= */}
 
-              <h3>
-                Live Classes
-              </h3>
-
-              <p>
-                Join interactive live classes conducted by teachers
-                and learn from anywhere.
-              </p>
-
-              <a href="#classes">
-                Explore classes →
-              </a>
-
-            </article>
-
-
-            <article className="feature-card" id="tests">
-
-              <div className="feature-icon">
-                📝
-              </div>
-
-              <h3>
-                Online Tests
-              </h3>
-
-              <p>
-                Take online tests, receive instant results and
-                understand your strengths and weaknesses.
-              </p>
-
-              <a href="#tests">
-                Take a test →
-              </a>
-
-            </article>
-
-
-            <article className="feature-card">
-
-              <div className="feature-icon">
-                📊
-              </div>
-
-              <h3>
-                Progress Reports
-              </h3>
-
-              <p>
-                Track attendance, marks, classes, tests and overall
-                learning performance.
-              </p>
-
-              <a href="#">
-                View progress →
-              </a>
-
-            </article>
-
-
-            <article className="feature-card" id="guidance">
-
-              <div className="feature-icon">
-                🧭
-              </div>
-
-              <h3>
-                Career Guidance
-              </h3>
-
-              <p>
-                Get guidance after 10th and 12th for subjects,
-                streams, courses and colleges.
-              </p>
-
-              <a href="#guidance">
-                Explore guidance →
-              </a>
-
-            </article>
-
-          </div>
-
-        </section>
-
-
-        {/* PORTALS */}
-        <section className="users-section">
-
-          <div className="section-heading">
-
-            <p className="section-label">
-              ONE PLATFORM
-            </p>
-
-            <h2>
-              Built for Students, Teachers & Parents
-            </h2>
-
-          </div>
-
-
-          <div className="user-grid">
-
-            <article className="user-card">
-
-              <div className="user-number">
-                01
-              </div>
-
-              <h3>
-                Student Portal
-              </h3>
-
-              <p>
-                Access your classes, tests, results, attendance,
-                progress reports and career guidance.
-              </p>
-
-              <a href="/login" className="card-btn">
-                Student Portal
-              </a>
-
-            </article>
-
-
-            <article className="user-card">
-
-              <div className="user-number">
-                02
-              </div>
-
-              <h3>
-                Teacher Portal
-              </h3>
-
-              <p>
-                Create live classes, conduct tests, manage students
-                and monitor academic performance.
-              </p>
-
-              <a href="/login" className="card-btn">
-                Teacher Portal
-              </a>
-
-            </article>
-
-
-            <article className="user-card">
-
-              <div className="user-number">
-                03
-              </div>
-
-              <h3>
-                Parent Portal
-              </h3>
-
-              <p>
-                View your child's classes, attendance, test results,
-                feedback and complete progress.
-              </p>
-
-              <a href="/login" className="card-btn">
-                Parent Portal
-              </a>
-
-            </article>
-
-          </div>
-
-        </section>
-
-
-        {/* SECURITY */}
-        <section className="security-section">
-
-          <div className="security-content">
-
-            <div className="security-icon">
-              🔐
-            </div>
-
-            <div>
-
-              <p className="section-label">
-                YOUR DATA, YOUR ACCESS
-              </p>
-
-              <h2>
-                Your personal education data stays protected.
-              </h2>
-
-              <p>
-                Student, teacher and parent portals are designed with
-                role-based access so members can access only the
-                information they are authorized to see.
-              </p>
-
-            </div>
-
-          </div>
-
-        </section>
-
-      </main>
-
-
-      {/* FOOTER */}
       <footer className="footer">
 
-        <div className="footer-container">
+        <div className="footer-content">
 
           <div className="footer-brand">
 
@@ -440,33 +594,58 @@ function Home() {
             </h3>
 
             <p>
-              Saarthi Education Online
+              Education Online
             </p>
 
-            <p>
-              Learn better. Track progress. Plan your future.
-            </p>
+            <span>
+              Your complete education partner.
+            </span>
 
           </div>
 
 
           <div className="footer-links">
 
-            <a href="#home">
-              Home
-            </a>
+            <div>
 
-            <a href="#classes">
-              Live Classes
-            </a>
+              <h4>
+                Platform
+              </h4>
 
-            <a href="#tests">
-              Tests
-            </a>
+              <a href="#live-classes">
+                Live Classes
+              </a>
 
-            <a href="#guidance">
-              Career Guidance
-            </a>
+              <a href="#tests">
+                Tests
+              </a>
+
+              <a href="#career">
+                Career Guidance
+              </a>
+
+            </div>
+
+
+            <div>
+
+              <h4>
+                Portals
+              </h4>
+
+              <a href="/login/student">
+                Student
+              </a>
+
+              <a href="/login/teacher">
+                Teacher
+              </a>
+
+              <a href="/login/parent">
+                Parent
+              </a>
+
+            </div>
 
           </div>
 
@@ -476,7 +655,8 @@ function Home() {
         <div className="footer-bottom">
 
           <p>
-            © 2026 Saarthi Education Online. All rights reserved.
+            © 2026 Saarthi Education Online.
+            All rights reserved.
           </p>
 
         </div>
