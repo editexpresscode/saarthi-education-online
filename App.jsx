@@ -1,53 +1,91 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-import Home from './Home'
-import Login from './Login'
-import Signup from './Signup'
+import Home from './pages/Home'
+import Login from './pages/Login'
+import Signup from './pages/Signup'
 
-import StudentLogin from './StudentLogin'
-import TeacherLogin from './TeacherLogin'
-import ParentLogin from './ParentLogin'
+import StudentLogin from './pages/StudentLogin'
+import TeacherLogin from './pages/TeacherLogin'
+import ParentLogin from './pages/ParentLogin'
 
-import StudentDashboard from './StudentDashboard'
+import StudentDashboard from './pages/StudentDashboard'
+import TeacherDashboard from './pages/TeacherDashboard'
+import InstantHelp from './pages/InstantHelp'
+import TeacherDoubts from './pages/TeacherDoubts'
+
+import { InstantHelpProvider } from './InstantHelpContext'
 
 import './App.css'
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
+    <InstantHelpProvider>
+      <BrowserRouter>
+        <Routes>
 
-        <Route path="/" element={<Home />} />
+          {/* HOME */}
+          <Route
+            path="/"
+            element={<Home />}
+          />
 
-        <Route path="/login" element={<Login />} />
+          {/* LOGIN */}
+          <Route
+            path="/login"
+            element={<Login />}
+          />
 
-        <Route
-          path="/login/student"
-          element={<StudentLogin />}
-        />
+          {/* STUDENT LOGIN */}
+          <Route
+            path="/login/student"
+            element={<StudentLogin />}
+          />
 
-        <Route
-          path="/login/teacher"
-          element={<TeacherLogin />}
-        />
+          {/* TEACHER LOGIN */}
+          <Route
+            path="/login/teacher"
+            element={<TeacherLogin />}
+          />
 
-        <Route
-          path="/login/parent"
-          element={<ParentLogin />}
-        />
+          {/* PARENT LOGIN */}
+          <Route
+            path="/login/parent"
+            element={<ParentLogin />}
+          />
 
-        <Route
-          path="/signup"
-          element={<Signup />}
-        />
+          {/* SIGNUP */}
+          <Route
+            path="/signup"
+            element={<Signup />}
+          />
 
-        <Route
-          path="/student-dashboard"
-          element={<StudentDashboard />}
-        />
+          {/* STUDENT DASHBOARD */}
+          <Route
+            path="/student-dashboard"
+            element={<StudentDashboard />}
+          />
 
-      </Routes>
-    </BrowserRouter>
+          {/* TEACHER DASHBOARD */}
+          <Route
+            path="/teacher-dashboard"
+            element={<TeacherDashboard />}
+          />
+
+          {/* STUDENT INSTANT HELP */}
+          <Route
+            path="/instant-help"
+            element={<InstantHelp />}
+          />
+
+          {/* TEACHER INSTANT DOUBTS */}
+          <Route
+            path="/teacher-doubts"
+            element={<TeacherDoubts />}
+          />
+
+        </Routes>
+      </BrowserRouter>
+    </InstantHelpProvider>
   )
 }
 

@@ -2,46 +2,28 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 function StudentDashboard() {
-  const [menuOpen, setMenuOpen] = useState(false)
-  const [selectedClass, setSelectedClass] = useState('Class 10')
-  const [classMenuOpen, setClassMenuOpen] = useState(false)
-
-  const classes = [
-    'Class 8',
-    'Class 9',
-    'Class 10',
-    'Class 11',
-    'Class 12'
-  ]
+  const [selectedClass, setSelectedClass] = useState('10')
 
   return (
     <div className="student-app">
 
-      {/* MOBILE SIDEBAR OVERLAY */}
-      {menuOpen && (
-        <div
-          className="sidebar-overlay"
-          onClick={() => setMenuOpen(false)}
-        ></div>
-      )}
+      {/* =========================
+          SIDEBAR
+      ========================= */}
 
-      {/* SIDEBAR */}
-      <aside className={`student-sidebar ${menuOpen ? 'open' : ''}`}>
+      <aside className="student-sidebar">
 
         <div className="sidebar-header">
           <div className="sidebar-logo">
             SAARTHI
           </div>
 
-          <button
-            className="close-menu"
-            onClick={() => setMenuOpen(false)}
-          >
+          <button className="close-menu">
             ×
           </button>
         </div>
 
-        {/* STUDENT PROFILE */}
+
         <div className="sidebar-user">
 
           <div className="user-avatar">
@@ -50,48 +32,58 @@ function StudentDashboard() {
 
           <div>
             <h3>Student</h3>
-            <p>{selectedClass}</p>
+            <p>Class {selectedClass}</p>
           </div>
 
         </div>
 
-        {/* SIDEBAR MENU */}
+
         <nav className="sidebar-nav">
 
-          <Link to="/student-dashboard">
+          <Link
+            to="/student-dashboard"
+            className="active"
+          >
             🏠
             <span>Dashboard</span>
           </Link>
 
-          <Link to="/find-teacher">
+
+          <Link to="/instant-help">
             🆘
             <span>Instant Help</span>
           </Link>
 
-          <Link to="/classes">
-            📡
+
+          <Link to="/live-classes">
+            📚
             <span>Live Classes</span>
           </Link>
+
 
           <Link to="/tests">
             📝
             <span>Tests</span>
           </Link>
 
+
           <Link to="/progress">
             📊
             <span>My Progress</span>
           </Link>
+
 
           <Link to="/doubt-history">
             💬
             <span>Doubt History</span>
           </Link>
 
-          <Link to="/feedback">
+
+          <Link to="/teacher-feedback">
             ⭐
             <span>Teacher Feedback</span>
           </Link>
+
 
           <Link to="/notifications">
             🔔
@@ -100,7 +92,7 @@ function StudentDashboard() {
 
         </nav>
 
-        {/* SIDEBAR BOTTOM */}
+
         <div className="sidebar-bottom">
 
           <Link to="/profile">
@@ -108,10 +100,12 @@ function StudentDashboard() {
             <span>My Profile</span>
           </Link>
 
+
           <Link to="/settings">
             ⚙️
             <span>Settings</span>
           </Link>
+
 
           <Link to="/">
             🚪
@@ -123,28 +117,23 @@ function StudentDashboard() {
       </aside>
 
 
-      {/* MAIN APP */}
+      {/* =========================
+          MAIN
+      ========================= */}
+
       <main className="student-main">
 
-        {/* TOP BAR */}
+
+        {/* TOPBAR */}
+
         <header className="student-topbar">
-
-          <button
-            className="menu-button"
-            onClick={() => setMenuOpen(true)}
-          >
-            ☰
-          </button>
-
-          <div className="mobile-logo">
-            SAARTHI
-          </div>
 
           <div className="topbar-right">
 
             <button className="notification-button">
               🔔
             </button>
+
 
             <div className="topbar-profile">
 
@@ -154,7 +143,7 @@ function StudentDashboard() {
 
               <div>
                 <strong>Student</strong>
-                <span>{selectedClass}</span>
+                <span>Class {selectedClass}</span>
               </div>
 
             </div>
@@ -164,10 +153,15 @@ function StudentDashboard() {
         </header>
 
 
-        {/* DASHBOARD CONTENT */}
+        {/* =========================
+            DASHBOARD CONTENT
+        ========================= */}
+
         <div className="dashboard-content">
 
+
           {/* WELCOME */}
+
           <section className="welcome-section">
 
             <p className="welcome-label">
@@ -184,52 +178,43 @@ function StudentDashboard() {
 
 
             {/* CLASS SELECTOR */}
+
             <div className="class-selector">
 
-              <span>Your Class</span>
+              <span>
+                Your Class
+              </span>
 
               <div className="class-select-wrapper">
 
-                <button
+                <select
                   className="class-select-button"
-                  onClick={() =>
-                    setClassMenuOpen(!classMenuOpen)
+                  value={selectedClass}
+                  onChange={(e) =>
+                    setSelectedClass(e.target.value)
                   }
                 >
-                  {selectedClass}
-                  <span>▾</span>
-                </button>
+                  <option value="8">
+                    Class 8
+                  </option>
 
+                  <option value="9">
+                    Class 9
+                  </option>
 
-                {classMenuOpen && (
-                  <div className="class-dropdown">
+                  <option value="10">
+                    Class 10
+                  </option>
 
-                    {classes.map((item) => (
+                  <option value="11">
+                    Class 11
+                  </option>
 
-                      <button
-                        key={item}
-                        className={
-                          selectedClass === item
-                            ? 'selected-class'
-                            : ''
-                        }
-                        onClick={() => {
-                          setSelectedClass(item)
-                          setClassMenuOpen(false)
-                        }}
-                      >
-                        {item}
+                  <option value="12">
+                    Class 12
+                  </option>
 
-                        {selectedClass === item && (
-                          <span>✓</span>
-                        )}
-
-                      </button>
-
-                    ))}
-
-                  </div>
-                )}
+                </select>
 
               </div>
 
@@ -238,7 +223,10 @@ function StudentDashboard() {
           </section>
 
 
-          {/* INSTANT HELP */}
+          {/* =========================
+              INSTANT HELP
+          ========================= */}
+
           <section className="instant-help-card">
 
             <div className="instant-help-content">
@@ -257,13 +245,14 @@ function StudentDashboard() {
               </p>
 
               <Link
-                to="/find-teacher"
+                to="/instant-help"
                 className="instant-help-button"
               >
                 🆘 Get Instant Help
               </Link>
 
             </div>
+
 
             <div className="help-illustration">
               🎓
@@ -272,12 +261,16 @@ function StudentDashboard() {
           </section>
 
 
-          {/* LIVE CLASSES */}
+          {/* =========================
+              LIVE CLASSES
+          ========================= */}
+
           <section className="dashboard-section">
 
             <div className="section-header">
 
               <div>
+
                 <p className="section-label">
                   LEARN LIVE
                 </p>
@@ -287,11 +280,13 @@ function StudentDashboard() {
                 </h2>
 
                 <p>
-                  Classes for {selectedClass}
+                  Classes for Class {selectedClass}
                 </p>
+
               </div>
 
-              <Link to="/classes">
+
+              <Link to="/live-classes">
                 View all →
               </Link>
 
@@ -300,8 +295,10 @@ function StudentDashboard() {
 
             <div className="class-grid">
 
+
               {/* FREE CLASS */}
-              <article className="class-card">
+
+              <div className="class-card">
 
                 <div className="class-card-top">
 
@@ -315,22 +312,24 @@ function StudentDashboard() {
 
                 </div>
 
+
                 <h3>
-                  Mathematics – {selectedClass}
+                  Mathematics
                 </h3>
 
                 <p className="class-teacher">
-                  👨‍🏫 Mr. Sharma
+                  👨‍🏫 Rahul Sharma
                 </p>
 
                 <p className="class-description">
-                  Quadratic Equations & Important Questions
+                  Algebra & Quadratic Equations
                 </p>
+
 
                 <div className="class-details">
 
                   <span>
-                    🕐 6:00 PM
+                    🕕 Today • 6:00 PM
                   </span>
 
                   <span>
@@ -339,82 +338,92 @@ function StudentDashboard() {
 
                 </div>
 
+
                 <Link
-                  to="/live-class"
+                  to="/live-classes"
                   className="class-action"
                 >
-                  Join Free Class
+                  Join Class →
                 </Link>
 
-              </article>
+              </div>
 
 
-              {/* PAID CLASS */}
-              <article className="class-card">
+              {/* PREMIUM CLASS */}
+
+              <div className="class-card">
 
                 <div className="class-card-top">
 
                   <span className="paid-tag">
-                    PAID
+                    PREMIUM
                   </span>
 
-                  <strong className="class-price">
-                    ₹99
-                  </strong>
+                  <span className="class-price">
+                    ₹199
+                  </span>
 
                 </div>
 
+
                 <h3>
-                  Physics – {selectedClass}
+                  Science
                 </h3>
 
                 <p className="class-teacher">
-                  👨‍🏫 Dr. Rahul
+                  👨‍🏫 Priya Verma
                 </p>
 
                 <p className="class-description">
-                  Current Electricity – Complete Concept
+                  Complete Chapter Revision
                 </p>
+
 
                 <div className="class-details">
 
                   <span>
-                    🕐 7:30 PM
+                    🕕 Tomorrow • 5:30 PM
                   </span>
 
                   <span>
-                    ⭐ 4.8
+                    👥 86 students
                   </span>
 
                 </div>
 
+
                 <Link
-                  to="/class-details"
+                  to="/live-classes"
                   className="class-action"
                 >
-                  Enroll Now
+                  View Class →
                 </Link>
 
-              </article>
+              </div>
 
             </div>
 
           </section>
 
 
-          {/* UPCOMING CLASSES */}
+          {/* =========================
+              UPCOMING CLASS
+          ========================= */}
+
           <section className="dashboard-section">
 
             <div className="section-header">
 
               <div>
+
                 <p className="section-label">
-                  YOUR SCHEDULE
+                  UPCOMING
                 </p>
 
                 <h2>
-                  Upcoming Classes
+                  Next Class
                 </h2>
+
               </div>
 
             </div>
@@ -423,48 +432,62 @@ function StudentDashboard() {
             <div className="upcoming-card">
 
               <div className="upcoming-date">
-                <strong>08</strong>
-                <span>OCT</span>
-              </div>
 
-              <div className="upcoming-info">
-
-                <h3>
-                  Physics – Current Electricity
-                </h3>
-
-                <p>
-                  Dr. Rahul • {selectedClass}
-                </p>
+                <strong>
+                  09
+                </strong>
 
                 <span>
-                  🕐 Tomorrow • 7:30 PM
+                  OCT
                 </span>
 
               </div>
 
-              <button>
-                View Details
-              </button>
+
+              <div className="upcoming-info">
+
+                <h3>
+                  Mathematics — Trigonometry
+                </h3>
+
+                <p>
+                  Rahul Sharma • Class {selectedClass}
+                </p>
+
+                <span>
+                  Tomorrow • 6:00 PM
+                </span>
+
+              </div>
+
+
+              <Link to="/live-classes">
+                View →
+              </Link>
 
             </div>
 
           </section>
 
 
-          {/* QUICK ACCESS */}
+          {/* =========================
+              QUICK ACCESS
+          ========================= */}
+
           <section className="dashboard-section">
 
             <div className="section-header">
 
               <div>
+
                 <p className="section-label">
-                  YOUR LEARNING
+                  QUICK ACCESS
                 </p>
 
                 <h2>
-                  Quick Access
+                  Continue Learning
                 </h2>
+
               </div>
 
             </div>
@@ -472,18 +495,28 @@ function StudentDashboard() {
 
             <div className="quick-grid">
 
+
               <Link
                 to="/tests"
                 className="quick-card"
               >
-                <span>📝</span>
+
+                <span>
+                  📝
+                </span>
 
                 <div>
-                  <h3>Tests</h3>
+
+                  <h3>
+                    Online Tests
+                  </h3>
+
                   <p>
-                    Take tests & view results
+                    Practice and improve your score
                   </p>
+
                 </div>
+
               </Link>
 
 
@@ -491,14 +524,23 @@ function StudentDashboard() {
                 to="/progress"
                 className="quick-card"
               >
-                <span>📊</span>
+
+                <span>
+                  📊
+                </span>
 
                 <div>
-                  <h3>My Progress</h3>
+
+                  <h3>
+                    My Progress
+                  </h3>
+
                   <p>
-                    Track your performance
+                    Check your learning performance
                   </p>
+
                 </div>
+
               </Link>
 
 
@@ -506,29 +548,47 @@ function StudentDashboard() {
                 to="/doubt-history"
                 className="quick-card"
               >
-                <span>💬</span>
+
+                <span>
+                  💬
+                </span>
 
                 <div>
-                  <h3>Doubt History</h3>
+
+                  <h3>
+                    Doubt History
+                  </h3>
+
                   <p>
-                    Previous teacher sessions
+                    View previous doubt sessions
                   </p>
+
                 </div>
+
               </Link>
 
 
               <Link
-                to="/feedback"
+                to="/teacher-feedback"
                 className="quick-card"
               >
-                <span>⭐</span>
+
+                <span>
+                  ⭐
+                </span>
 
                 <div>
-                  <h3>Teacher Feedback</h3>
+
+                  <h3>
+                    Teacher Feedback
+                  </h3>
+
                   <p>
                     Rate your learning experience
                   </p>
+
                 </div>
+
               </Link>
 
             </div>
