@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useInstantHelp } from '../InstantHelpContext'
+import { useInstantHelp } from './InstantHelpContext'
 
 function InstantHelp() {
   const [selectedClass, setSelectedClass] = useState('')
