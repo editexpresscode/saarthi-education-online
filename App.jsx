@@ -1,17 +1,17 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-import Home from './pages/Home'
-import Login from './pages/Login'
-import Signup from './pages/Signup'
+import Home from './Home'
+import Login from './Login'
+import Signup from './Signup'
 
-import StudentLogin from './pages/StudentLogin'
-import TeacherLogin from './pages/TeacherLogin'
-import ParentLogin from './pages/ParentLogin'
+import StudentLogin from './StudentLogin'
+import TeacherLogin from './TeacherLogin'
+import ParentLogin from './ParentLogin'
 
-import StudentDashboard from './pages/StudentDashboard'
-import TeacherDashboard from './pages/TeacherDashboard'
-import InstantHelp from './pages/InstantHelp'
-import TeacherDoubts from './pages/TeacherDoubts'
+import StudentDashboard from './StudentDashboard'
+import TeacherDashboard from './TeacherDashboard'
+import InstantHelp from './InstantHelp'
+import TeacherDoubts from './TeacherDoubts'
 
 import { InstantHelpProvider } from './InstantHelpContext'
 
@@ -23,61 +23,30 @@ function App() {
       <BrowserRouter>
         <Routes>
 
-          {/* HOME */}
-          <Route
-            path="/"
-            element={<Home />}
-          />
+          <Route path="/" element={<Home />} />
 
-          {/* LOGIN */}
-          <Route
-            path="/login"
-            element={<Login />}
-          />
+          <Route path="/login" element={<Login />} />
+          <Route path="/login/student" element={<StudentLogin />} />
+          <Route path="/login/teacher" element={<TeacherLogin />} />
+          <Route path="/login/parent" element={<ParentLogin />} />
 
-          {/* STUDENT LOGIN */}
-          <Route
-            path="/login/student"
-            element={<StudentLogin />}
-          />
+          <Route path="/signup" element={<Signup />} />
 
-          {/* TEACHER LOGIN */}
-          <Route
-            path="/login/teacher"
-            element={<TeacherLogin />}
-          />
-
-          {/* PARENT LOGIN */}
-          <Route
-            path="/login/parent"
-            element={<ParentLogin />}
-          />
-
-          {/* SIGNUP */}
-          <Route
-            path="/signup"
-            element={<Signup />}
-          />
-
-          {/* STUDENT DASHBOARD */}
           <Route
             path="/student-dashboard"
             element={<StudentDashboard />}
           />
 
-          {/* TEACHER DASHBOARD */}
           <Route
             path="/teacher-dashboard"
             element={<TeacherDashboard />}
           />
 
-          {/* STUDENT INSTANT HELP */}
           <Route
             path="/instant-help"
             element={<InstantHelp />}
           />
 
-          {/* TEACHER INSTANT DOUBTS */}
           <Route
             path="/teacher-doubts"
             element={<TeacherDoubts />}
