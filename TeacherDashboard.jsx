@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { useInstantHelp } from '../InstantHelpContext'
+import { useInstantHelp } from './InstantHelpContext'
 
 function TeacherDashboard() {
   const {
